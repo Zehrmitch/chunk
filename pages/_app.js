@@ -1,9 +1,10 @@
 import '../styles/global.css';
 import NavBar from '../components/NavBar';
+import React from 'react';
 
 export default function App({ Component, pageProps }) {
 	return (
-		<>
+		<div>
 			<div>
 				<NavBar />
 			</div>
@@ -14,7 +15,7 @@ export default function App({ Component, pageProps }) {
 				</div>
 				<p>Footer</p>
 			</div>
-		</>
+		</div>
 	);
 }
 

@@ -1,6 +1,7 @@
 import { Popover } from '@headlessui/react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import ChunkButton from '../ChunkButton';
+import React from 'react';
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');

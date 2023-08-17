@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loading from '../app/loading.js';
 
-import ChunkButton from '../components/ChunkButton/index.js';
-import SyntaxHighlighter from '../components/SyntaxHighlighter/index.js';
+import { PrismCode } from '../components/PrismCode/index.js';
 import Divider from '../components/Divider/index.js';
+import CodeBlock from '../components/PrismCode/index.js';
 
 export default function Chunks(props) {
 	const [loading, setLoading] = useState(true);
@@ -32,10 +32,16 @@ export default function Chunks(props) {
 			});
 	}
 
+	const code = `
+    const add = (a, b) => {
+      return a + b;
+    }
+  `;
+
 	if (loading) return <Loading />;
 	else {
 		return (
-			<>
+			<div>
 				<ul>
 					{data.chunks.map((item) => (
 						<li>
@@ -44,7 +50,11 @@ export default function Chunks(props) {
 									Header: {item.title}
 								</div>
 								<div className='px-4 py-5 sm:p-6'>
-									<SyntaxHighlighter content={item.content} />
+									<PrismCode
+										code={code}
+										language='js'
+										plugins={['line-numbers']}
+									/>
 									Content: {item.content}
 								</div>
 								<div className='px-4 py-4 sm:px-6 grid grid-cols-9 gap-1 content-center'>
@@ -65,7 +75,7 @@ export default function Chunks(props) {
 				<div>
 					<Divider />
 				</div>
-			</>
+			</div>
 		);
 	}
 }

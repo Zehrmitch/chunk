@@ -1,4 +1,5 @@
 import { PlusIcon } from '@heroicons/react/20/solid';
+import React from 'react';
 
 export default function Divider() {
 	return (

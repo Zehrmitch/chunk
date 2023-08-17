@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Loading from '../app/loading.js';
 
@@ -9,6 +9,7 @@ import CodeBlock from '../components/PrismCode/index.js';
 export default function Chunks(props) {
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState(null);
+	const [showMore, setShowMore] = useState(false);
 
 	useEffect(() => {
 		getChunks();
@@ -22,7 +23,8 @@ export default function Chunks(props) {
 		axios
 			.get(requestURL)
 			.then((response) => {
-				setData(response.data);
+				setData(response.data.chunks);
+				console.log(response.data);
 			})
 			.catch((error) => {
 				console.error('Error fetching data: ', error);
@@ -38,42 +40,44 @@ export default function Chunks(props) {
     }
   `;
 
+	function createCards(numShown) {
+		return data.slice(0, numShown).map((item) => (
+			<li key={item.id} className='pt-5'>
+				<div className='divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow'>
+					<div className='px-4 py-5 sm:px-6'>
+						Header: {item.title}
+					</div>
+					<div className='px-4 py-5 sm:p-6'>
+						<PrismCode
+							code={code}
+							language='js'
+							plugins={['line-numbers']}
+						/>
+						Content: {item.content}
+					</div>
+					<div className='px-4 py-4 sm:px-6 grid grid-cols-9 gap-1 content-center'>
+						{item.tags.map((item, i) => (
+							<option
+								key={i}
+								value={item}
+								className='px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full text-center'
+							>
+								{item}
+							</option>
+						))}
+					</div>
+				</div>
+			</li>
+		));
+	}
+
 	if (loading) return <Loading />;
 	else {
 		return (
 			<div>
-				<ul>
-					{data.chunks.map((item) => (
-						<li>
-							<div className='divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow'>
-								<div className='px-4 py-5 sm:px-6'>
-									Header: {item.title}
-								</div>
-								<div className='px-4 py-5 sm:p-6'>
-									<PrismCode
-										code={code}
-										language='js'
-										plugins={['line-numbers']}
-									/>
-									Content: {item.content}
-								</div>
-								<div className='px-4 py-4 sm:px-6 grid grid-cols-9 gap-1 content-center'>
-									{item.tags.map((item, i) => (
-										<option
-											key={i}
-											value={item}
-											className='px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full text-center'
-										>
-											{item}
-										</option>
-									))}
-								</div>
-							</div>
-						</li>
-					))}
-				</ul>
+				<ul>{showMore ? createCards(data.length) : createCards(5)}</ul>
 				<div>
-					<Divider />
+					<Divider setShowMore={setShowMore} showMore={showMore} />
 				</div>
 			</div>
 		);

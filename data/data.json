@@ -3,7 +3,107 @@
     {
       "id": 1,
       "title": "first chunk",
-      "content": "print('hello world')",
+      "code": "print('hello world')",
+	    "language": "javascript",
+      "description": "python code to print hello world. This is usually the first step in learning a new language",
+      "excerpt": "prints hello world",
+      "tags": ["python", "hello world", "beginner"],
+      "created_at": "2023-07-16 02:00:00",
+      "updated_at": "2023-07-16 03:00:00"
+    },
+    {
+      "id": 2,
+      "title": "first chunk",
+      "code": "print('hello world')",
+	    "language": "javascript",
+      "description": "python code to print hello world. This is usually the first step in learning a new language",
+      "excerpt": "prints hello world",
+      "tags": ["python", "hello world", "beginner"],
+      "created_at": "2023-07-16 02:00:00",
+      "updated_at": "2023-07-16 03:00:00"
+    },
+    {
+      "id": 3,
+      "title": "first chunk",
+      "code": "print('hello world')",
+	    "language": "javascript",
+      "description": "python code to print hello world. This is usually the first step in learning a new language",
+      "excerpt": "prints hello world",
+      "tags": ["python", "hello world", "beginner"],
+      "created_at": "2023-07-16 02:00:00",
+      "updated_at": "2023-07-16 03:00:00"
+    },
+    {
+      "id": 4,
+      "title": "first chunk",
+      "code": "print('hello world')",
+	    "language": "javascript",
+      "description": "python code to print hello world. This is usually the first step in learning a new language",
+      "excerpt": "prints hello world",
+      "tags": ["python", "hello world", "beginner"],
+      "created_at": "2023-07-16 02:00:00",
+      "updated_at": "2023-07-16 03:00:00"
+    },
+    {
+      "id": 5,
+      "title": "first chunk",
+      "code": "print('hello world')",
+	    "language": "javascript",
+      "description": "python code to print hello world. This is usually the first step in learning a new language",
+      "excerpt": "prints hello world",
+      "tags": ["python", "hello world", "beginner"],
+      "created_at": "2023-07-16 02:00:00",
+      "updated_at": "2023-07-16 03:00:00"
+    },
+    {
+      "id": 6,
+      "title": "first chunk",
+      "code": "print('hello world')",
+	    "language": "javascript",
+      "description": "python code to print hello world. This is usually the first step in learning a new language",
+      "excerpt": "prints hello world",
+      "tags": ["python", "hello world", "beginner"],
+      "created_at": "2023-07-16 02:00:00",
+      "updated_at": "2023-07-16 03:00:00"
+    },
+    {
+      "id": 7,
+      "title": "first chunk",
+      "code": "print('hello world')",
+	    "language": "javascript",
+      "description": "python code to print hello world. This is usually the first step in learning a new language",
+      "excerpt": "prints hello world",
+      "tags": ["python", "hello world", "beginner"],
+      "created_at": "2023-07-16 02:00:00",
+      "updated_at": "2023-07-16 03:00:00"
+    },
+    {
+      "id": 8,
+      "title": "first chunk",
+      "code": "print('hello world')",
+	    "language": "javascript",
+      "description": "python code to print hello world. This is usually the first step in learning a new language",
+      "excerpt": "prints hello world",
+      "tags": ["python", "hello world", "beginner"],
+      "created_at": "2023-07-16 02:00:00",
+      "updated_at": "2023-07-16 03:00:00"
+    },
+    {
+      "id": 9,
+      "title": "first chunk",
+      "code": "print('hello world')",
+	    "language": "javascript",
+      "description": "python code to print hello world. This is usually the first step in learning a new language",
+      "excerpt": "prints hello world",
+      "tags": ["python", "hello world", "beginner"],
+      "created_at": "2023-07-16 02:00:00",
+      "updated_at": "2023-07-16 03:00:00"
+    },
+    {
+      "id": 10,
+      "title": "first chunk",
+      "code": "print('hello world')",
+	    "language": "javascript",
       "description": "python code to print hello world. This is usually the first step in learning a new language",
       "excerpt": "prints hello world",
       "tags": ["python", "hello world", "beginner"],
@@ -12,7 +112,3 @@
     }
   ]
 }
-
-
-
-

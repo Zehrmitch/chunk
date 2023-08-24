@@ -1,13 +1,29 @@
 import { Popover } from '@headlessui/react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import ChunkButton from '../ChunkButton';
-import React from 'react';
+import React, { useState } from 'react';
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
 }
 
-export default function NavBar() {
+export default function NavBar(data) {
+	const [search, setSearch] = useState('');
+
+	const onSearch = (e) => {
+		e.preventDefault();
+		setSearch(document.getElementById('input_id').value.toLowerCase());
+	};
+
+	const checkMatch = (item) => {
+		return (
+			item.description.toLowerCase().includes(search) ||
+			item.name.toLowerCase().includes(search)
+		);
+	};
+
+	let filteredData = data;
+
 	return (
 		<>
 			<Popover
@@ -51,13 +67,22 @@ export default function NavBar() {
 														aria-hidden='true'
 													/>
 												</div>
-												<input
-													id='search'
-													name='search'
-													className='block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-													placeholder='Search'
-													type='search'
-												/>
+												<form onSubmit={onSearch}>
+													<input
+														type='text'
+														id='input_id'
+														required
+														name='search'
+														className='block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+														placeholder='Search'
+													/>
+													<button
+														type='submit'
+														class='text-white absolute right-1 bottom-1 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+													>
+														Search
+													</button>
+												</form>
 											</div>
 										</div>
 									</div>

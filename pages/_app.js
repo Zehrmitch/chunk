@@ -11,8 +11,6 @@ export default function App({ Component, pageProps }) {
 		getPosts().then((json) => {
 			setPosts(json);
 			setSearchResults(json);
-			console.log(json);
-			console.log('app post json');
 		});
 	}, []);
 

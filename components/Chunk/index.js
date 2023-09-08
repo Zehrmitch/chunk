@@ -1,4 +1,12 @@
+import { PrismCode } from '/components/PrismCode/index.js';
+
 const Post = ({ post }) => {
+	const code = `
+	const add = (a, b) => {
+		return a + b;
+	}
+`;
+
 	return (
 		<article key={post.id} className='pt-5'>
 			<div className='divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow'>
@@ -9,18 +17,15 @@ const Post = ({ post }) => {
 						language='js'
 						plugins={['line-numbers']}
 					/>
-					Content: {post.content}
+					Content: {post.body}
 				</div>
 				<div className='px-4 py-4 sm:px-6 grid grid-cols-9 gap-1 content-center'>
-					{post.tags.map((item, i) => (
-						<option
-							key={i}
-							value={item}
-							className='px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full text-center'
-						>
-							{item}
-						</option>
-					))}
+					<option
+						key={post.id}
+						className='px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full text-center'
+					>
+						{post.id}
+					</option>
 				</div>
 			</div>
 		</article>

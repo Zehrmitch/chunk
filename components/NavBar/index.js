@@ -7,22 +7,22 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
 }
 
-export default function NavBar(data) {
-	const [search, setSearch] = useState('');
+export default function NavBar({ posts, setSearchResults }) {
+	const handleSubmit = (e) => e.preventDefault();
 
-	const onSearch = (e) => {
-		e.preventDefault();
-		setSearch(document.getElementById('input_id').value.toLowerCase());
-	};
+	const handleSearchChange = (e) => {
+		if (!e.target.value) {
+			return setSearchResults(posts);
+		}
 
-	const checkMatch = (item) => {
-		return (
-			item.description.toLowerCase().includes(search) ||
-			item.name.toLowerCase().includes(search)
+		const resultsArray = posts.filter(
+			(post) =>
+				post.title.includes(e.target.value) ||
+				post.body.includes(e.target.value)
 		);
-	};
 
-	let filteredData = data;
+		setSearchResults(resultsArray);
+	};
 
 	return (
 		<>
@@ -54,10 +54,7 @@ export default function NavBar(data) {
 								<div className='min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-8'>
 									<div className='flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0'>
 										<div className='w-full'>
-											<label
-												htmlFor='search'
-												className='sr-only'
-											>
+											<label className='sr-only'>
 												Search
 											</label>
 											<div className='relative'>
@@ -67,10 +64,13 @@ export default function NavBar(data) {
 														aria-hidden='true'
 													/>
 												</div>
-												<form onSubmit={onSearch}>
+												<form onSubmit={handleSubmit}>
 													<input
 														type='text'
-														id='input_id'
+														id='search'
+														onChange={
+															handleSearchChange
+														}
 														required
 														name='search'
 														className='block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
@@ -78,7 +78,10 @@ export default function NavBar(data) {
 													/>
 													<button
 														type='submit'
-														class='text-white absolute right-1 bottom-1 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+														onChange={
+															handleSearchChange
+														}
+														className='text-white absolute right-1 bottom-1 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
 													>
 														Search
 													</button>

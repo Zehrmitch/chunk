@@ -7,7 +7,7 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
 }
 
-export default function NavBar({ posts, setSearchResults }) {
+export default function NavBar({ posts, setSearchResults, setPosts }) {
 	const handleSubmit = (e) => e.preventDefault();
 
 	const handleSearchChange = (e) => {
@@ -18,7 +18,11 @@ export default function NavBar({ posts, setSearchResults }) {
 		const resultsArray = posts.filter(
 			(post) =>
 				post.title.includes(e.target.value) ||
-				post.body.includes(e.target.value)
+				post.body.includes(e.target.value) ||
+				post.excerpt.includes(e.target.value) ||
+				post.tags.some((tag) =>
+					tag.toLowerCase().includes(e.target.value)
+				)
 		);
 
 		setSearchResults(resultsArray);
@@ -92,7 +96,10 @@ export default function NavBar({ posts, setSearchResults }) {
 								</div>
 
 								<div className='hidden lg:flex lg:items-center lg:justify-end xl:col-span-2'>
-									<ChunkButton />
+									<ChunkButton
+										setPosts={setPosts}
+										setSearchResults={setSearchResults}
+									/>
 								</div>
 							</div>
 						</div>

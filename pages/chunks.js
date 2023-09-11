@@ -14,8 +14,15 @@ export default function Chunks({ searchResults }) {
 	const content = results?.length ? (
 		results
 	) : (
-		<article>
-			<p>No Matching Posts</p>
+		<article className='pt-5'>
+			<div className='divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow'>
+				<div className='px-4 py-5 sm:px-6'>No matching posts</div>
+				<div className='px-4 py-5 sm:p-6'>
+					<p className='text-center text-sm'>
+						Please adjust your search criteria
+					</p>
+				</div>
+			</div>
 		</article>
 	);
 

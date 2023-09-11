@@ -15,12 +15,16 @@ export default function App({ Component, pageProps }) {
 	}, []);
 
 	return (
-		<div className='bg-gray-100'>
-			<div>
-				<NavBar posts={posts} setSearchResults={setSearchResults} />
+		<div className='bg-gray-100 min-h-screen h-full flex-col grid grid-cols-9'>
+			<div className='col-span-9'>
+				<NavBar
+					posts={posts}
+					setSearchResults={setSearchResults}
+					setPosts={setPosts}
+				/>
 			</div>
-			<div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4'>
-				<div className='mx-auto max-w-3xl'>
+			<div className='px-2 sm:px-4 lg:px-6 pt-2 col-start-3 col-span-5'>
+				<div className='mx-auto max-w-7xl'>
 					<div>
 						<div>
 							<Component
@@ -30,8 +34,8 @@ export default function App({ Component, pageProps }) {
 						</div>
 					</div>
 				</div>
-				<p>Footer</p>
 			</div>
+			<p className='col-span-9 mx-auto py-4'>Footer</p>
 		</div>
 	);
 }

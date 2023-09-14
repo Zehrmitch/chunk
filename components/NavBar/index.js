@@ -75,20 +75,12 @@ export default function NavBar({ posts, setSearchResults, setPosts }) {
 														onChange={
 															handleSearchChange
 														}
+														autocomplete='off'
 														required
 														name='search'
-														className='block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+														className='block w-full rounded-lg border-black border-2 bg-white py-2 pl-10 pr-3 text-black placeholder:text-gray-600 focus:ring-2 focus:ring-inset sm:text-md sm:leading-6'
 														placeholder='Search'
 													/>
-													<button
-														type='submit'
-														onChange={
-															handleSearchChange
-														}
-														className='text-white absolute right-1 bottom-1 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-													>
-														Search
-													</button>
 												</form>
 											</div>
 										</div>

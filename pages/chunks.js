@@ -7,14 +7,14 @@ export default function Chunks({ searchResults }) {
 	const [loading, setLoading] = useState(false);
 	const [showMore, setShowMore] = useState(false);
 
-	const results = searchResults.map((post) => (
-		<Post key={post.id} post={post} />
+	const results = searchResults.map((post, index) => (
+		<Post key={post.id} post={post} index={index} />
 	));
 
 	const content = results?.length ? (
 		results
 	) : (
-		<article className='pt-5'>
+		<article className='mt-5 shadow-hard rounded-lg border-2 border-black'>
 			<div className='divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow'>
 				<div className='px-4 py-5 sm:px-6'>No matching posts</div>
 				<div className='px-4 py-5 sm:p-6'>

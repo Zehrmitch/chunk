@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+	width: 0em; /* Adjust as needed */
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: transparent; /* Hide the thumb */
+}
+
+.custom-background {
+	background-color: #f0f0f0;
+	background-image: radial-gradient(#dcded1 1px, #f0f0f0 1px);
+	background-size: 13px 13px;
+}

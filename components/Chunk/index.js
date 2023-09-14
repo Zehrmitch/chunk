@@ -1,9 +1,15 @@
 import { PrismCode } from '/components/PrismCode/index.js';
 
-const Post = ({ post }) => {
+const Post = ({ post, index }) => {
+	const colors = ['bg-[#BBD6E2]', 'bg-[#e3787f]', 'bg-[#addb95]'];
+
 	return (
-		<article key={post.id} className='pt-5'>
-			<div className='divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow'>
+		<article key={post.id} className='mt-10 shadow-hard rounded-lg'>
+			<div
+				className={`divide-y divide-gray-200 overflow-hidden rounded-lg ${
+					colors[index % colors.length]
+				} border-2 border-black`}
+			>
 				<div className='px-4 py-5 sm:px-6'>{post.title}</div>
 				<div className='px-4 py-5 sm:p-6'>
 					<PrismCode

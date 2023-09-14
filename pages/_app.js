@@ -2,6 +2,7 @@ import '../styles/global.css';
 import NavBar from '../components/NavBar';
 import React, { useState, useEffect } from 'react';
 import { getPosts } from '../api/server.js';
+import '../styles/global.css';
 
 export default function App({ Component, pageProps }) {
 	const [posts, setPosts] = useState([]);
@@ -15,7 +16,7 @@ export default function App({ Component, pageProps }) {
 	}, []);
 
 	return (
-		<div className='bg-gray-100 min-h-screen h-full flex-col grid grid-cols-9'>
+		<div className='custom-background min-h-screen w-screen flex-col grid grid-cols-9'>
 			<div className='col-span-9'>
 				<NavBar
 					posts={posts}

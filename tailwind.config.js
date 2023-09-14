@@ -6,7 +6,12 @@ module.exports = {
 		'./components/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
-		extend: {},
+		extend: {
+			boxShadow: {
+				hard: '4px 4px 0px 2px #000000',
+				hardsm: '2px 2px 0px 1px #000000',
+			},
+		},
 	},
 	plugins: [require('@tailwindcss/forms')],
 };

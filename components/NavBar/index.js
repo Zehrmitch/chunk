@@ -75,7 +75,7 @@ export default function NavBar({ posts, setSearchResults, setPosts }) {
 														onChange={
 															handleSearchChange
 														}
-														autocomplete='off'
+														autoComplete='off'
 														required
 														name='search'
 														className='block w-full rounded-lg border-black border-2 bg-white py-2 pl-10 pr-3 text-black placeholder:text-gray-600 focus:ring-2 focus:ring-inset sm:text-md sm:leading-6'
@@ -87,7 +87,7 @@ export default function NavBar({ posts, setSearchResults, setPosts }) {
 									</div>
 								</div>
 
-								<div className='hidden lg:flex lg:items-center lg:justify-end xl:col-span-2'>
+								<div className='flex items-center justify-end col-span-2'>
 									<ChunkButton
 										setPosts={setPosts}
 										setSearchResults={setSearchResults}

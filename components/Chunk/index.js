@@ -1,7 +1,29 @@
 import { PrismCode } from '/components/PrismCode/index.js';
 
 const Post = ({ post, index }) => {
-	const colors = ['bg-[#BBD6E2]', 'bg-[#e3787f]', 'bg-[#addb95]'];
+	const colors = ['bg-[#FFC900]', 'bg-[#239F94]', 'bg-[#FF90E7]'];
+
+	const deleteChunk = () => {
+		fetch(`http://localhost:42069/api/deleteChunk/${post.id}`, {
+			method: 'DELETE',
+		})
+			.then((response) => {
+				if (response.ok) {
+					return response.text();
+				} else {
+					throw new Error('Failed to delete chunk');
+				}
+			})
+			.then((responseText) => {
+				setResponseMessage(responseText); // Update state with response
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+				setResponseMessage('Error occurred');
+			});
+
+		window.location.reload();
+	};
 
 	return (
 		<article key={post.id} className='mt-10 shadow-hard rounded-lg'>
@@ -13,11 +35,11 @@ const Post = ({ post, index }) => {
 				<div className='px-4 py-5 sm:px-6'>{post.title}</div>
 				<div className='px-4 py-5 sm:p-6'>
 					<PrismCode
-						code={post.body}
+						code={post.content}
 						language='js'
 						plugins={['line-numbers']}
 					/>
-					{post.excerpt}
+					{post.body}
 				</div>
 				<div className='px-4 py-4 sm:px-6 grid grid-cols-9 gap-1 content-center'>
 					{post.tags.map((tag, i) => (
@@ -30,6 +52,7 @@ const Post = ({ post, index }) => {
 					))}
 				</div>
 			</div>
+			<button onClick={deleteChunk}>Delete Chunk</button>
 		</article>
 	);
 };

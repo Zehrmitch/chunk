@@ -1,29 +1,8 @@
 import { PrismCode } from '/components/PrismCode/index.js';
+import DeleteButton from '../DeleteButton';
 
 const Post = ({ post, index }) => {
 	const colors = ['bg-[#FFC900]', 'bg-[#239F94]', 'bg-[#FF90E7]'];
-
-	const deleteChunk = () => {
-		fetch(`http://localhost:42069/api/deleteChunk/${post.id}`, {
-			method: 'DELETE',
-		})
-			.then((response) => {
-				if (response.ok) {
-					return response.text();
-				} else {
-					throw new Error('Failed to delete chunk');
-				}
-			})
-			.then((responseText) => {
-				setResponseMessage(responseText); // Update state with response
-			})
-			.catch((error) => {
-				console.error('Error:', error);
-				setResponseMessage('Error occurred');
-			});
-
-		window.location.reload();
-	};
 
 	return (
 		<article key={post.id} className='mt-10 shadow-hard rounded-lg'>
@@ -32,7 +11,14 @@ const Post = ({ post, index }) => {
 					colors[index % colors.length]
 				} border-2 border-black`}
 			>
-				<div className='px-4 py-5 sm:px-6'>{post.title}</div>
+				<div className='grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6 '>
+					<div className='px-4 py-5 sm:px-6 sm:col-span-5'>
+						{post.title}
+					</div>
+					<div className='sm:col-span-1 px-2 py-3 flex items-center justify-end'>
+						<DeleteButton id={post.id} />
+					</div>
+				</div>
 				<div className='px-4 py-5 sm:p-6'>
 					<PrismCode
 						code={post.content}
@@ -52,7 +38,6 @@ const Post = ({ post, index }) => {
 					))}
 				</div>
 			</div>
-			<button onClick={deleteChunk}>Delete Chunk</button>
 		</article>
 	);
 };

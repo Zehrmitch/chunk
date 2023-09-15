@@ -48,7 +48,7 @@ export default function DeleteButton({ postId }) {
 				Delete
 			</button>
 			{showModal && (
-				<div className='z-60 top-0 bottom-0 left-0 right-0 fixed bg-opacity-60 bg-black '>
+				<div className='z-100 top-0 bottom-0 left-0 right-0 h-screen fixed bg-opacity-60 bg-black'>
 					<div className='justify-center items-center flex py-20 fixed inset-x-0'>
 						<main className='container max-w-screen-md  border-2 border-gray-500 rounded-lg'>
 							<article

@@ -15,13 +15,13 @@ const Post = ({ post, index }) => {
 					<div className='px-4 py-5 sm:px-6 sm:col-span-5'>
 						{post.title}
 					</div>
-					<div className='sm:col-span-1 px-2 py-3 relative items-center justify-end z-90'>
+					<div className='sm:col-span-1 px-2 py-3 relative items-center justify-end flex'>
 						<DeleteButton id={post.id} />
 					</div>
 				</div>
 				<div className='px-4 py-5 sm:p-6 z-1'>
 					<PrismCode
-						code={post.content}
+						code={post.body}
 						language='js'
 						plugins={['line-numbers']}
 					/>

@@ -34,19 +34,16 @@ export default function ChunkButton({ setPosts, setSearchResults }) {
 	};
 
 	const handleDataCreation = () => {
-		const code = `
-			const add = (a, b) => {
-				return a + b;
-			}
-		`;
-
 		const sampleData = {
-			title: 'Some actual example',
-			content: 'Wow this is a cool code snipet',
-			body: code,
-			excerpt: 'this is the excerpt that I want to be shown',
+			title: data.Title,
+			description: data.Description,
+			body: data.Code,
+			language: data.Language,
 			tags: ['JS', 'Code'],
+			link: data.Link,
 		};
+
+		console.log(sampleData);
 
 		fetch('http://localhost:42069/api/createChunk', {
 			method: 'POST',
@@ -63,14 +60,13 @@ export default function ChunkButton({ setPosts, setSearchResults }) {
 				}
 			})
 			.then((responseText) => {
-				setResponseMessage(responseText); // Update state with response
+				setResponseMessage(responseText);
 			})
 			.catch((error) => {
 				console.error('Error:', error);
 				setResponseMessage('Error occurred');
 			});
-
-		window.location.reload();
+		setShowModal(false);
 	};
 
 	const {
@@ -80,11 +76,9 @@ export default function ChunkButton({ setPosts, setSearchResults }) {
 		formState: { errors },
 	} = useForm();
 
-	const onSubmit = (data) => {
+	const onSubmit = (formData) => {
+		setData(formData);
 		handleDataCreation();
-		setData(data);
-		setShowModal(false);
-		reset();
 	};
 
 	const cancelClick = () => {
@@ -122,7 +116,13 @@ export default function ChunkButton({ setPosts, setSearchResults }) {
 									<div className=' border-gray-300 h-full bg-white rounded'>
 										<form
 											className='space-y-8 divide-y divide-gray-200'
-											onSubmit={handleSubmit(onSubmit)}
+											// onSubmit={handleSubmit(onSubmit)}
+											onSubmit={handleSubmit(
+												(results) => {
+													console.log(results);
+													setData(results);
+												}
+											)}
 										>
 											<div className='space-y-8 divide-y divide-gray-200'>
 												<div>
@@ -301,51 +301,30 @@ export default function ChunkButton({ setPosts, setSearchResults }) {
 																/>
 															</div>
 														</div>
-														<div className='sm:col-span-2'>
-															<label className='block text-sm font-medium text-gray-700'>
-																ZIP / Postal
-																code
-															</label>
-															<div className='mt-1'>
-																<input
-																	type='text'
-																	name='postal-code'
-																	id='postal-code'
-																	autoComplete='postal-code'
-																	required
-																	{...register(
-																		'PostalCode',
-																		{
-																			required: true,
-																		}
-																	)}
-																	className='shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-1'
-																/>
-															</div>
-														</div>
 													</div>
 												</div>
 											</div>
+											<footer className='flex justify-end px-8 pb-8 pt-4'>
+												<button
+													type='button'
+													onClick={cancelClick}
+													className='bg-white py-2 px-4 border-black border-2 rounded-md shadow-sm text-sm font-medium text-black hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+												>
+													Cancel
+												</button>
+												<button
+													type='submit'
+													// onClick={handleSubmit(
+													// 	onSubmit
+													// )}
+													className='ml-3 inline-flex justify-center py-2 px-4 border-black border-2 shadow-sm text-sm font-medium rounded-md text-black bg-[#fadf7d] hover:bg-[#FFC900] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+												>
+													Save
+												</button>
+											</footer>
 										</form>
 									</div>
 								</section>
-
-								<footer className='flex justify-end px-8 pb-8 pt-4'>
-									<button
-										type='button'
-										onClick={cancelClick}
-										className='bg-white py-2 px-4 border-black border-2 rounded-md shadow-sm text-sm font-medium text-black hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-									>
-										Cancel
-									</button>
-									<button
-										type='submit'
-										onClick={handleSubmit(onSubmit)}
-										className='ml-3 inline-flex justify-center py-2 px-4 border-black border-2 shadow-sm text-sm font-medium rounded-md text-black bg-[#fadf7d] hover:bg-[#FFC900] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-									>
-										Save
-									</button>
-								</footer>
 							</article>
 						</main>
 					</div>

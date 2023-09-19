@@ -1,7 +1,7 @@
 import { MinusCircleIcon } from '@heroicons/react/20/solid';
 import React, { useState } from 'react';
 
-export default function DeleteButton({ postId }) {
+export default function DeleteButton({ id }) {
 	const [showModal, setShowModal] = useState(false);
 
 	const cancelClick = () => {
@@ -12,8 +12,10 @@ export default function DeleteButton({ postId }) {
 		setShowModal(true);
 	};
 
-	const deleteChunk = () => {
-		fetch(`http://localhost:42069/api/deleteChunk/${postId}`, {
+	const deleteChunk = async () => {
+		console.log('id' + id);
+
+		await fetch(`http://localhost:42069/api/deleteChunk/${id}`, {
 			method: 'DELETE',
 		})
 			.then((response) => {
@@ -24,11 +26,10 @@ export default function DeleteButton({ postId }) {
 				}
 			})
 			.then((responseText) => {
-				setResponseMessage(responseText);
+				console.log(responseText);
 			})
 			.catch((error) => {
 				console.error('Error:', error);
-				setResponseMessage('Error occurred');
 			});
 		setShowModal(false);
 		window.location.reload();

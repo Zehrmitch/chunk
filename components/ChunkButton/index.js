@@ -1,5 +1,5 @@
 import { PlusCircleIcon } from '@heroicons/react/20/solid';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { PrismCode } from '/components/PrismCode/index.js';
 
@@ -10,6 +10,12 @@ export default function ChunkButton({ setPosts, setSearchResults }) {
 
 	const [selectedLanguage, setSelectedLanguage] = useState('js');
 	const [inputValue, setInputValue] = useState('');
+
+	useEffect(() => {
+		if (Object.keys(data).length !== 0) {
+			handleDataCreation();
+		}
+	}, [data]);
 
 	const handleInputChange = (event) => {
 		const newValue = event.target.value;
@@ -42,8 +48,6 @@ export default function ChunkButton({ setPosts, setSearchResults }) {
 			tags: ['JS', 'Code'],
 			link: data.Link,
 		};
-
-		console.log(sampleData);
 
 		fetch('http://localhost:42069/api/createChunk', {
 			method: 'POST',
@@ -78,7 +82,7 @@ export default function ChunkButton({ setPosts, setSearchResults }) {
 
 	const onSubmit = (formData) => {
 		setData(formData);
-		handleDataCreation();
+		// handleDataCreation();
 	};
 
 	const cancelClick = () => {
@@ -120,7 +124,7 @@ export default function ChunkButton({ setPosts, setSearchResults }) {
 											onSubmit={handleSubmit(
 												(results) => {
 													console.log(results);
-													setData(results);
+													onSubmit(results);
 												}
 											)}
 										>
@@ -314,9 +318,14 @@ export default function ChunkButton({ setPosts, setSearchResults }) {
 												</button>
 												<button
 													type='submit'
-													// onClick={handleSubmit(
-													// 	onSubmit
-													// )}
+													onClick={handleSubmit(
+														(results) => {
+															onSubmit(results);
+															console.log(
+																results
+															);
+														}
+													)}
 													className='ml-3 inline-flex justify-center py-2 px-4 border-black border-2 shadow-sm text-sm font-medium rounded-md text-black bg-[#fadf7d] hover:bg-[#FFC900] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
 												>
 													Save

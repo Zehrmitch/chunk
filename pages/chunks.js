@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Loading from '../app/loading.js';
 
 import Post from '../components/Chunk/index.js';
@@ -30,11 +30,4 @@ export default function Chunks({ searchResults }) {
 	else {
 		return <main>{content}</main>;
 	}
-}
-
-{
-	/* <ul>{showMore ? createCards(data.length) : createCards(5)}</ul>
-				<div>
-					<Divider setShowMore={setShowMore} showMore={showMore} />
-				</div> */
 }

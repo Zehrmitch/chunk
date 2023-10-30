@@ -33,5 +33,3 @@ export async function getStaticProps() {
 		},
 	};
 }
-
-// get static props is a next js function that allows us to fetch data at build time

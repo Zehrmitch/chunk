@@ -25,7 +25,7 @@ const Post = ({ post, index }) => {
 						language='js'
 						plugins={['line-numbers']}
 					/>
-					{post.body}
+					{post.description}
 				</div>
 				<div className='px-4 py-4 sm:px-6 grid grid-cols-9 gap-1 content-center'>
 					{post.tags.map((tag, i) => (
@@ -42,5 +42,3 @@ const Post = ({ post, index }) => {
 	);
 };
 export default Post;
-
-// code-toolbar

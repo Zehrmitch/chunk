@@ -15,3 +15,17 @@
 	background-image: radial-gradient(#dcded1 1px, #f0f0f0 1px);
 	background-size: 13px 13px;
 }
+
+@keyframes scrolling {
+	0% {
+		transform: translateX(0%);
+	}
+	50% {
+		transform: translateX(-50%);
+	}
+}
+
+.scrolling-banner {
+	@apply inline-block;
+	animation: scrolling 15s linear infinite;
+}

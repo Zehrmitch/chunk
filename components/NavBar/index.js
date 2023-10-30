@@ -19,7 +19,7 @@ export default function NavBar({ posts, setSearchResults, setPosts }) {
 			(post) =>
 				post.title.includes(e.target.value) ||
 				post.body.includes(e.target.value) ||
-				post.excerpt.includes(e.target.value) ||
+				post.description.includes(e.target.value) ||
 				post.tags.some((tag) =>
 					tag.toLowerCase().includes(e.target.value)
 				)

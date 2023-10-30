@@ -8,3 +8,8 @@ export const getPosts = async () => {
 	const response = await api.get('/getChunks');
 	return response.data;
 };
+
+export const getProducts = async () => {
+	const response = await api.get('/store/getProducts');
+	return response.data;
+};

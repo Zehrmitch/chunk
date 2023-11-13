@@ -45,9 +45,18 @@ export default function NavBar({ posts, setSearchResults, setPosts }) {
 							<div className='relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12'>
 								<div className='flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2'>
 									<div className='flex flex-shrink-0 items-center'>
-										<a href='/chunks'>
+										<a
+											href='/chunks'
+											className='flex items-center'
+										>
+											<img
+												src='https://i.ibb.co/XYDw7z4/image-removebg-preview-1.png'
+												alt='Code chunks logo'
+												className='w-12 h-12'
+												border='0'
+											/>
 											<p
-												className='h-8 w-auto'
+												className='h-8 w-auto pt-1'
 												alt='Code Chunks'
 											>
 												Code Chunks

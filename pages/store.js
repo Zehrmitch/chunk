@@ -5,11 +5,10 @@ import FlashSaleBanner from '../components/Banner/index.js';
 export default function Store(props) {
 	return (
 		<div className='bg-white'>
-			<FlashSaleBanner></FlashSaleBanner>
-			<div className='mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8'>
+			<FlashSaleBanner />
+			<div className='mx-auto max-w-2xl px-4 py-16 md:px-6 md:py-12 lg:max-w-4xl lg:px-8'>
 				<h2 className='sr-only'>Products</h2>
-
-				<div className='grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8'>
+				<div className='grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-6 md:gap-y-10 lg:grid-cols-2 lg:gap-x-8'>
 					{props.products.map((product) => (
 						<Link href={`/store/${product.slug}`} key={product.id}>
 							<div
